@@ -36,35 +36,35 @@ class RlpWetterDataUpdateCoordinator(DataUpdateCoordinator):
         """Rufe Daten vom API-Endpunkt ab."""
         try:
             async with async_timeout.timeout(REQUEST_TIMEOUT):
+                # Send request
                 response = await self.session.get(self.api_url)
-                response.raise_for_status()  # Löst Fehler bei 4xx/5xx aus
+                response.raise_for_status()
                 data = await response.json()
 
                 if not data or "messwerte" not in data or not data["messwerte"]:
                     raise UpdateFailed("Keine gültigen Messwerte in der API-Antwort gefunden.")
 
-                # Gib die Stationsinfos und den *ersten* (neuesten) Messwert zurück
-                # Stelle sicher, dass nur das Objekt, nicht das Array zurückgegeben wird,
-                # damit Sensoren direkt darauf zugreifen können.
+                # Return the latest measurement
                 latest_measurement = data["messwerte"][0]
 
-                # Füge Stationsinfos zum Datenobjekt hinzu, falls benötigt von Sensoren
-                # (z.B. für Attribute)
+                # Add station info
                 latest_measurement["station_name"] = data.get("station_name")
                 latest_measurement["station_id"] = data.get("station_id")
                 latest_measurement["station_height"] = data.get("station_height")
-
 
                 return latest_measurement
 
         except aiohttp.ClientConnectorError as err:
             raise UpdateFailed(f"Verbindungsfehler zur API: {err}") from err
         except aiohttp.ClientResponseError as err:
-             _LOGGER.error("API-Fehler %s für Station %s: %s", err.status, self.station_id, err.message)
+             # Log 5xx errors as warnings (transient) and 4xx as errors (config issue)
+             if 500 <= err.status <= 599:
+                 _LOGGER.warning("API-Fehler (Server/Gateway) %s für Station %s: %s", err.status, self.station_id, err.message)
+             else:
+                _LOGGER.error("API-Fehler (Client) %s für Station %s: %s", err.status, self.station_id, err.message)
              raise UpdateFailed(f"API-Fehler: {err.status} - {err.message}") from err
         except TimeoutError as err:
             raise UpdateFailed(f"Timeout bei der API-Abfrage: {err}") from err
         except Exception as err:
             _LOGGER.exception("Unerwarteter Fehler beim Abrufen der Wetterdaten für Station %s", self.station_id)
             raise UpdateFailed(f"Unerwarteter Fehler: {err}") from err
-

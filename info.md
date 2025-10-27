@@ -1,10 +1,10 @@
 {% if installed %}
 
 <div align="center">
-  <br><img src="./custom_components/rlp_wetter/icon.png" alt="Icon" width="128"><br><br>
+  <br><img src="https://raw.githubusercontent.com/Bitte-ein-Git/ha_rlp_wetter/refs/heads/master/custom_components/rlp_wetter/icon.png" alt="Icon" width="128"><br><br>
 </div>
 
-{% endif%}
+{% endif %}
 
 {% if not installed %}
 
@@ -18,7 +18,7 @@
   </ul>
 </div>
 
-{% endif%}
+{% endif %}
 
 <div align="center">
 

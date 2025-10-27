@@ -1,5 +1,7 @@
 {
   "name": "🌦️ Rheinland-Pfalz Wetterdaten",
   "render_readme": false,
+  "country": ["DE"],
+  "content_in_root": false,
   "homeassistant": "2025.7.1"
 }

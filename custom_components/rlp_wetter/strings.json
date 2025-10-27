@@ -1,30 +1,32 @@
 {
-    "config": {
-      "step": {
-        "user": {
-          "title": "RLP Wetter Station auswählen",
-          "description": "Bitte wähle die Wetterstation aus, deren Daten du hinzufügen möchtest.",
-          "data": {
-            "station_id": "Wetterstation"
-          }
+  "config": {
+    "step": {
+      "user": {
+        "title": "RLP Wetter Station auswählen",
+        "description": "Bitte wähle die Wetterstation aus, deren Daten du hinzufügen möchtest.",
+        "data": {
+          "station_id": "Wetterstation"
         }
-      },
-      "error": {
-        "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
-        "unknown": "[%key:common::config_flow::error::unknown%]"
-      },
-      "abort": {
-        "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
       }
     },
-    "options": {
-        "step": {
-          "init": {
-              "title": "RLP Wetter Optionen",
-              "description": "Derzeit gibt es keine Optionen zum Konfigurieren.",
-              "data": {}
-          }
-        }
+    "error": {
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "invalid_sid": "Ungültige Stations-ID oder Parameter.",
+      "fetch_failed": "Daten konnten nicht abgerufen werden (API-Problem 50x oder 404).",
+      "validation_failed": "Keine gültigen Messwerte von der API erhalten."
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
     }
+  },
+  "options": {
+      "step": {
+        "init": {
+            "title": "RLP Wetter Optionen",
+            "description": "Derzeit gibt es keine Optionen zum Konfigurieren.",
+            "data": {}
+        }
+      }
   }
-  
+}
