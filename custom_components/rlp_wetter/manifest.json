@@ -9,5 +9,5 @@
   "issue_tracker": "https://github.com/Bitte-ein-Git/ha_rlp_wetter/issues",
   "loggers": ["custom_components.rlp_wetter"],
   "requirements": [],
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

@@ -1,10 +1,10 @@
 {% if installed %}
 
 <div align="center">
-  <br><img src="./custom_components/rlp_wetter/icon.png" alt="Icon" width="128"><br><br>
+  <br><img src="https://raw.githubusercontent.com/Bitte-ein-Git/ha_rlp_wetter/refs/heads/master/custom_components/rlp_wetter/icon.png" alt="Icon" width="128"><br><br>
 </div>
 
-{% endif%}
+{% endif %}
 
 {% if not installed %}
 
@@ -18,11 +18,11 @@
   </ul>
 </div>
 
-{% endif%}
+{% endif %}
 
 <div align="center">
 
-# [API](https://github.com/Bitte-ein-Git/ha_rlp_wetter) used
+# [API](https://github.com/Bitte-ein-Git/rlp-wetter-api) used
 
 </div>
 </br>
@@ -49,7 +49,7 @@
 ## Configuration
 
 ### Easy Configuration (Link to Config Screen)
-[![ADD][setup2]](https://ha-link.heyfordy.de/redirect/config_flow_start/?domain=kodi_helpers)
+[![ADD][setup2]](https://ha-link.heyfordy.de/redirect/config_flow_start/?domain=rlp_wetter)
 ### Manual Configuration
 1. Add a new config entry via UI:
    - Go to your Home Assistant **Settings**
