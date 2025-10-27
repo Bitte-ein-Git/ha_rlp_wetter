@@ -1,0 +1,30 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "RLP Wetter Station auswählen",
+          "description": "Bitte wähle die Wetterstation aus, deren Daten du hinzufügen möchtest.",
+          "data": {
+            "station_id": "Wetterstation"
+          }
+        }
+      },
+      "error": {
+        "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+        "unknown": "[%key:common::config_flow::error::unknown%]"
+      },
+      "abort": {
+        "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+      }
+    },
+    "options": {
+        "step": {
+          "init": {
+              "title": "RLP Wetter Optionen",
+              "description": "Derzeit gibt es keine Optionen zum Konfigurieren.",
+              "data": {}
+          }
+        }
+    }
+  }
+  
